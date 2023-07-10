@@ -70,7 +70,8 @@ typings/
 /.idea/vcs.xml
 /src/its-cmp/package-lock.json
 /.idea/
-/micr-web/.mvn/
-/micr-dataservice/.mvn/
-/micr-api/.mvn/
-/micr-parent/.mvn/
+/micr-web/.mvn/*
+/micr-dataservice/.mvn/*
+/micr-api/.mvn/*
+/micr-parent/.mvn/*
+*.mvn
