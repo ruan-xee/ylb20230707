@@ -76,3 +76,4 @@ typings/
 /micr-parent/.mvn/*
 *.mvn
 target/
+*.iml
