@@ -1,37 +1,3 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : 本机mysql
-Source Server Version : 50536
-Source Host           : localhost:3306
-Source Database       : p2p
-
-Target Server Type    : MYSQL
-Target Server Version : 50536
-File Encoding         : 65001
-
-Date: 2021-01-09 17:07:28
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for `b_bid_info`
--- ----------------------------
-DROP TABLE IF EXISTS `b_bid_info`;
-CREATE TABLE `b_bid_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '投标记录ID',
-  `loan_id` int(11) NOT NULL COMMENT '产品ID',
-  `uid` int(11) NOT NULL COMMENT '用户ID',
-  `bid_money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '投标金额',
-  `bid_time` datetime NOT NULL COMMENT '投标时间',
-  `bid_status` int(11) NOT NULL COMMENT '投标状态',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3235 DEFAULT CHARSET=utf8 COMMENT='投资记录表';
-
--- ----------------------------
--- Records of b_bid_info
--- ----------------------------
 INSERT INTO `b_bid_info` VALUES ('3027', '7', '1', '1.00', '2017-08-20 15:04:54', '1');
 INSERT INTO `b_bid_info` VALUES ('3028', '7', '1', '1.00', '2017-08-20 15:04:55', '1');
 INSERT INTO `b_bid_info` VALUES ('3029', '7', '1', '1.00', '2017-08-20 15:04:55', '1');
@@ -241,25 +207,8 @@ INSERT INTO `b_bid_info` VALUES ('3232', '1310699', '23', '200.00', '2020-12-31 
 INSERT INTO `b_bid_info` VALUES ('3233', '1310699', '23', '300.00', '2020-12-31 14:32:41', '1');
 INSERT INTO `b_bid_info` VALUES ('3234', '1310697', '27', '100.00', '2020-12-31 14:34:00', '1');
 
--- ----------------------------
--- Table structure for `b_income_record`
--- ----------------------------
-DROP TABLE IF EXISTS `b_income_record`;
-CREATE TABLE `b_income_record` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL COMMENT '用户ID',
-  `loan_id` int(11) NOT NULL COMMENT '产品ID',
-  `bid_id` int(11) NOT NULL COMMENT '投标记录ID',
-  `bid_money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '投资金额',
-  `income_date` date NOT NULL COMMENT '收益时间',
-  `income_money` decimal(11,2) NOT NULL COMMENT '收益金额',
-  `income_status` int(11) NOT NULL COMMENT '收益状态（0未返，1已返）',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=315 DEFAULT CHARSET=utf8 COMMENT='收益记录表';
 
--- ----------------------------
--- Records of b_income_record
--- ----------------------------
+
 INSERT INTO `b_income_record` VALUES ('203', '1', '6', '214', '1.00', '2017-08-20', '0.01', '1');
 INSERT INTO `b_income_record` VALUES ('204', '1', '6', '215', '1.00', '2017-08-20', '0.01', '1');
 INSERT INTO `b_income_record` VALUES ('205', '1', '6', '216', '1.00', '2017-08-20', '0.01', '1');
@@ -364,32 +313,7 @@ INSERT INTO `b_income_record` VALUES ('312', '27', '1', '3215', '200.00', '2021-
 INSERT INTO `b_income_record` VALUES ('313', '27', '1', '3216', '300.00', '2021-01-05', '13.12', '1');
 INSERT INTO `b_income_record` VALUES ('314', '26', '1', '3227', '100.00', '2021-01-05', '4.37', '1');
 
--- ----------------------------
--- Table structure for `b_loan_info`
--- ----------------------------
-DROP TABLE IF EXISTS `b_loan_info`;
-CREATE TABLE `b_loan_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(50) NOT NULL COMMENT '产品名称',
-  `rate` decimal(11,2) NOT NULL COMMENT '产品利率',
-  `cycle` int(11) NOT NULL COMMENT '产品期限',
-  `release_time` date NOT NULL COMMENT '产品发布时间',
-  `product_type` int(11) NOT NULL COMMENT '产品类型 0新手宝，1优选产品，2散标产品',
-  `product_no` varchar(50) NOT NULL COMMENT '产品编号',
-  `product_money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '产品金额',
-  `left_product_money` decimal(11,2) NOT NULL COMMENT '产品剩余可投金额',
-  `bid_min_limit` decimal(11,2) NOT NULL COMMENT '最低投资金额，即起投金额',
-  `bid_max_limit` decimal(11,2) NOT NULL COMMENT '最高投资金额，即最多能投多少金额',
-  `product_status` int(11) NOT NULL COMMENT '产品状态（0未满标，1已满标，2满标已生成收益计划）',
-  `product_full_time` datetime DEFAULT NULL COMMENT '产品投资满标时间',
-  `product_desc` varchar(50) NOT NULL COMMENT '产品描述',
-  `version` int(11) NOT NULL COMMENT '版本号',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1310700 DEFAULT CHARSET=utf8 COMMENT='产品信息表';
 
--- ----------------------------
--- Records of b_loan_info
--- ----------------------------
 INSERT INTO `b_product_info` VALUES ('1', '个人信用消费借款1', '5.90', '9', '2018-07-24', '2', '20170722', '100000.00', '0.00', '100.00', '100.00', '2', '2020-12-31 14:32:41', '个人消费借款，信用良好，购车消费，精英人士', '4');
 INSERT INTO `b_product_info` VALUES ('2', '个人信用消费借款', '4.90', '6', '2017-07-24', '2', '20170722', '100000.00', '99696.00', '100.00', '100.00', '0', null, '个人消费借款，信用良好，购车消费，精英人士', '0');
 INSERT INTO `b_product_info` VALUES ('3', '个人信用消费借款', '4.90', '6', '2017-07-24', '2', '20170722', '100.00', '0.00', '100.00', '100.00', '0', null, '个人消费借款，信用良好，购车消费，精英人士', '100');
@@ -429,25 +353,7 @@ INSERT INTO `b_product_info` VALUES ('1310696', '双季宝', '6.50', '1', '2019-
 INSERT INTO `b_product_info` VALUES ('1310697', '年度宝', '8.50', '1', '2020-05-18', '1', '20170726', '1000000.00', '99900.00', '100.00', '100.00', '0', null, '短期信贷金融消费产品', '1');
 INSERT INTO `b_product_info` VALUES ('1310699', '新手宝', '12.00', '7', '2017-07-26', '0', '20170726', '10000.00', '0.00', '100.00', '2000.00', '0', '2020-12-31 14:32:41', '短期信贷金融消费产品', '8');
 
--- ----------------------------
--- Table structure for `b_recharge_record`
--- ----------------------------
-DROP TABLE IF EXISTS `b_recharge_record`;
-CREATE TABLE `b_recharge_record` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL COMMENT '用户id',
-  `recharge_no` varchar(50) NOT NULL COMMENT '充值订单号',
-  `recharge_status` int(1) NOT NULL COMMENT '充值订单状态（0充值中，1充值成功，2充值失败）',
-  `recharge_money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '充值金额',
-  `recharge_time` datetime NOT NULL COMMENT '充值时间',
-  `recharge_desc` varchar(50) NOT NULL COMMENT '充值描述',
-  `channel` varchar(50) DEFAULT '',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 COMMENT='充值记录表';
 
--- ----------------------------
--- Records of b_recharge_record
--- ----------------------------
 INSERT INTO `b_recharge_record` VALUES ('1', '1', '1501489834609', '0', '0.01', '2017-07-31 16:30:35', '支付购买理财产品', '');
 INSERT INTO `b_recharge_record` VALUES ('2', '1', '1501490635719', '0', '0.01', '2017-07-31 16:43:56', '支付购买理财产品', '');
 INSERT INTO `b_recharge_record` VALUES ('3', '1', '1501490823263', '1', '0.01', '2017-07-31 16:47:03', '支付购买理财产品', '');
@@ -514,20 +420,7 @@ INSERT INTO `b_recharge_record` VALUES ('63', '27', '2021010807174958814', '0', 
 INSERT INTO `b_recharge_record` VALUES ('64', '27', '2021010807210029615', '0', '1.00', '2021-01-08 15:21:00', '动力微信支付', 'weixin');
 INSERT INTO `b_recharge_record` VALUES ('65', '1', '2021010808064949316', '1', '1.00', '2021-01-08 16:06:49', '动力微信支付', 'weixin');
 
--- ----------------------------
--- Table structure for `u_finance_account`
--- ----------------------------
-DROP TABLE IF EXISTS `u_finance_account`;
-CREATE TABLE `u_finance_account` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL COMMENT '用户ID',
-  `available_money` decimal(11,2) NOT NULL DEFAULT '0.00' COMMENT '用户可用资金',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户财务资金账户表';
 
--- ----------------------------
--- Records of u_finance_account
--- ----------------------------
 INSERT INTO `u_finance_account` VALUES ('1', '1', '994949.61');
 INSERT INTO `u_finance_account` VALUES ('2', '5', '999999800.00');
 INSERT INTO `u_finance_account` VALUES ('3', '23', '688.00');
@@ -536,26 +429,7 @@ INSERT INTO `u_finance_account` VALUES ('5', '25', '888.00');
 INSERT INTO `u_finance_account` VALUES ('6', '26', '992.37');
 INSERT INTO `u_finance_account` VALUES ('7', '27', '1356.87');
 
--- ----------------------------
--- Table structure for `u_user`
--- ----------------------------
-DROP TABLE IF EXISTS `u_user`;
-CREATE TABLE `u_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID，主键',
-  `phone` varchar(11) NOT NULL COMMENT '注册手机号码',
-  `login_password` varchar(32) NOT NULL COMMENT '登录密码，密码长度最大16位',
-  `name` varchar(16) DEFAULT NULL COMMENT '用户姓名',
-  `id_card` varchar(18) DEFAULT NULL COMMENT '用户身份证号码',
-  `add_time` datetime DEFAULT NULL COMMENT '注册时间',
-  `last_login_time` datetime DEFAULT NULL COMMENT '最近登录时间',
-  `header_image` varchar(50) DEFAULT NULL COMMENT '用户头像文件路径',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_phone` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
--- ----------------------------
--- Records of u_user
--- ----------------------------
 INSERT INTO `u_user` VALUES ('1', '13700000000', 'e10adc3949ba59abbe56e057f20f883e', '张无忌', '222222222222222222', '2017-08-20 12:40:28', '2017-08-20 15:09:49', null);
 INSERT INTO `u_user` VALUES ('5', '13700000001', '003d81296cbed643579b24d1cf6c907c', '张三丰', '111111111111111111', '2017-08-20 12:40:32', '2017-08-20 11:30:22', null);
 INSERT INTO `u_user` VALUES ('6', '13700000002', '003d81296cbed643579b24d1cf6c907c', '0', '0', null, null, null);
