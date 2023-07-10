@@ -1,4 +1,4 @@
-package com.rxee.entity;
+package com.rxee.api.entity;
 
 import java.io.Serializable;
 import java.util.Date;

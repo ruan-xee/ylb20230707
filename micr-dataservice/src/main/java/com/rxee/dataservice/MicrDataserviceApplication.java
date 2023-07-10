@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableDubbo
 @SpringBootApplication
 @MapperScan(basePackages = "com.rxee.dataservice.mapper")
-public class MicrDateserviceApplication {
+public class MicrDataserviceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MicrDateserviceApplication.class, args);
+        SpringApplication.run(MicrDataserviceApplication.class, args);
     }
 
 }

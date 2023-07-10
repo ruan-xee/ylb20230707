@@ -1,6 +1,6 @@
 package com.rxee.dataservice.mapper;
 
-import com.rxee.entity.IncomeRecord;
+import com.rxee.api.entity.IncomeRecord;
 import org.apache.ibatis.annotations.*;
 
 public interface IncomeRecordMapper {
