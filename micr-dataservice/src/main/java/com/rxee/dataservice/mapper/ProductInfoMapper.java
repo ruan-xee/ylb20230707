@@ -11,5 +11,9 @@ public interface ProductInfoMapper {
     // 查询平均利率
     BigDecimal selectAvgRate();
 
-    List<ProductInfo> selectByTypeLimit(int pType, int offset, int pageSize);
+    List<ProductInfo> selectByTypeLimit(@Param("pType") int pType,
+                                        @Param("offset") int offset,
+                                        @Param("pageSize") int pageSize);
+
+    Integer selectCountByType(@Param("pType") Integer pType);
 }

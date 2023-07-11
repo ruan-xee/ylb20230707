@@ -40,4 +40,11 @@ public class ResultVo {
         resultVo.setCodeEnum(CodeEnum.CODE_500);
         return resultVo;
     }
+
+    // 表示失败的ResultVo对象
+    public static ResultVo fail_400() {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCodeEnum(CodeEnum.CODE_400);
+        return resultVo;
+    }
 }

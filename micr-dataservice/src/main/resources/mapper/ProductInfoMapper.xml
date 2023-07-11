@@ -9,5 +9,8 @@
   <select id="selectByTypeLimit" resultType="com.rxee.api.entity.ProductInfo">
     select * from b_product_info where product_type = #{pType} order by release_time limit #{offset},#{pageSize}
   </select>
+    <select id="selectCountByType" resultType="java.lang.Integer">
+      select count(id) as nums from b_product_info where product_type = #{pType}
+    </select>
 
 </mapper>

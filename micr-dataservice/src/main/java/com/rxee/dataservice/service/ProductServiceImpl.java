@@ -40,4 +40,13 @@ public class ProductServiceImpl implements ProductService {
         result.setSanBiao(list3);
         return result;
     }
+
+    @Override
+    public Integer queryRecordNumsByType(Integer pType) {
+        Integer count = 0;
+        if (pType <= 2 && pType >= 0) {
+            count = productInfoMapper.selectCountByType(pType);
+        }
+        return count;
+    }
 }
