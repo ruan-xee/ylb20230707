@@ -31,6 +31,11 @@
             <artifactId>micr-api</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.rxee</groupId>
+            <artifactId>micr-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!--Dubbo-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
