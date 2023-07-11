@@ -1,6 +1,6 @@
 package com.rxee.dataservice.service;
 
-import com.rxee.api.dto.BaseInfo;
+import com.rxee.api.dto.BaseInfoDto;
 import com.rxee.api.service.PlatBaseInfoService;
 import com.rxee.dataservice.mapper.BidInfoMapper;
 import com.rxee.dataservice.mapper.ProductInfoMapper;
@@ -24,11 +24,11 @@ public class PlatBaseInfoServiceImpl implements PlatBaseInfoService {
     private BidInfoMapper bidInfoMapper;
     // 平台基本信息
     @Override
-    public BaseInfo queryPlatBaseInfo() {
+    public BaseInfoDto queryPlatBaseInfo() {
 
-        Integer countUser = userMapper.selectCountUser();
+        int countUser = userMapper.selectCountUser();
         BigDecimal avgRate = productInfoMapper.selectAvgRate();
         BigDecimal sumBidMoney = bidInfoMapper.selectSumBidMoney();
-        return new BaseInfo(avgRate, sumBidMoney, countUser);
+        return new BaseInfoDto(avgRate, sumBidMoney, countUser);
     }
 }

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseInfo implements Serializable {
+public class BaseInfoDto implements Serializable {
     private static final long serialVersionUID = 3717590009844516584L;
     // 收益率平均值
     private BigDecimal historyAvgRate;
@@ -19,5 +19,5 @@ public class BaseInfo implements Serializable {
     private BigDecimal sumBidMoney;
 
     // 平台注册用户数
-    private Integer registerUser;
+    private int registerUser;
 }
