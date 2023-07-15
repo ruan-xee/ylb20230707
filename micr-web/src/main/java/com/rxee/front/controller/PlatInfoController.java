@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = "平台信息功能")
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/v1/plat")
 public class PlatInfoController extends BaseController {
 
     @ApiOperation(value = "平台三项基本信息", notes = "注册人数、平均利率、总投资金额")
-    @GetMapping("/plat/info")
-    public ResultVo queryPlatBaseInfo(){
+    @GetMapping("/info")
+    public ResultVo queryPlatBaseInfo() {
         BaseInfoDto baseInfo = platBaseInfoService.queryPlatBaseInfo();
 
         ResultVo resultVo = new ResultVo();

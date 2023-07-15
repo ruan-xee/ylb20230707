@@ -16,18 +16,18 @@ import java.util.List;
 
 @Api(tags = "产品相关功能")
 @RestController
-@RequestMapping("/v1")
-public class ProductController extends BaseController{
+@RequestMapping("/v1/product")
+public class ProductController extends BaseController {
 
     @ApiOperation(value = "首页三种类型的最新产品列表", notes = "一个新手宝，三个优选，三个散标")
-    @GetMapping("/product/index")
+    @GetMapping("/index")
     public ResultVo queryProductIndex() {
 
         MultiProduct multiProduct = productService.queryIndexPageProducts();
         return ResultVo.success(multiProduct);
     }
 
-    @GetMapping("/product/list")
+    @GetMapping("/list")
     public ResultVo queryProductByType(@RequestParam("pType") Integer pType,
                                        @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
                                        @RequestParam(value = "pageSize", required = false, defaultValue = "9") Integer pageSize) {

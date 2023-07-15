@@ -70,4 +70,13 @@ public class ResultVo {
         resultVo.setCodeEnum(CodeEnum.CODE_400);
         return resultVo;
     }
+
+    /**
+     * 自定义错误的ResultVo对象
+     */
+    public static ResultVo fail(CodeEnum codeEnum) {
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCodeEnum(codeEnum);
+        return resultVo;
+    }
 }
