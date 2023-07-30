@@ -7,13 +7,11 @@ import com.rxee.front.pageInfo.PageInfo;
 import com.rxee.front.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @Api(tags = "产品相关功能")
 @RestController
 @RequestMapping("/v1/product")
@@ -27,6 +25,7 @@ public class ProductController extends BaseController {
         return ResultVo.success(multiProduct);
     }
 
+    @ApiOperation(value = "查询对应类型的产品信息")
     @GetMapping("/list")
     public ResultVo queryProductByType(@RequestParam("pType") Integer pType,
                                        @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
