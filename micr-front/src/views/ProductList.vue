@@ -14,10 +14,12 @@
       </ul>
       <!--产品列表-->
       <ul class="preferred-select clearfix">
-        <li v-for="item in productInfo">
+        <li v-for="(item,index) in productInfo">
           <h3 class="preferred-select-title">
             <span>{{ item.productName }}</span>
-            <img src="@/assets/image/1-bg1.jpg" alt="">
+            <img src="@/assets/image/1-bg1.jpg" v-if="index%3 === 0">
+            <img src="@/assets/image/1-bg2.jpg" v-else-if="index%3 === 1">
+            <img src="@/assets/image/1-bg3.jpg" v-else>
           </h3>
           <div class="preferred-select-number">
             <p><b>{{ item.rate }}</b>%</p>
@@ -43,11 +45,11 @@
       <!--分页-->
       <div class="page_box">
         <ul class="pagination">
-          <li class="disabled"><span>首页</span></li>
-          <li><a href="">上一页</a></li>
+          <li><a href="javascript:void(0)" @click="getPage(1, 9)">首页</a></li>
+          <li v-if="page.pageNum !== 1"><a href="javascript:void(0)" @click="getPage(page.pageNum-1, 9)">上一页</a></li>
           <li class="active"><span>{{ page.pageNum }}</span></li>
-          <li><a href="">下一页</a></li>
-          <li><a href="">尾页</a></li>
+          <li v-if="page.pageNum !== page.totalPage"><a href="javascript:void(0)" @click="getPage(page.pageNum+1, 9)">下一页</a></li>
+          <li><a href="javascript:void(0)" @click="getPage(page.totalPage, 9)">尾页</a></li>
           <li class="totalPages"><span>共{{ page.totalPage }}页</span></li>
         </ul>
       </div>
@@ -96,17 +98,26 @@ export default {
       },
     }
   },
-  mounted () {
+  activated () {
     this.initPage()
   },
   methods: {
     initPage () {
+      this.getRank()
+      this.getPage(1, 9)
+    },
+    getRank () {
       doGet('/v1/invest/rank').then(data => {
         if (data.data.code === 200) {
           this.rank = data.data.list
         }
       })
-      doGet('/v1/product/list', {pType: this.$route.query.pType}).then(data => {
+    },
+    getPage (pageNum, pageSize) {
+      if (pageNum === this.page.pageNum) {
+        return
+      }
+      doGet('/v1/product/list', {pType: this.$route.query.pType, pageNum, pageSize}).then(data => {
         if (data.data.code === 200) {
           this.productInfo = data.data.list
           this.page = data.data.page
