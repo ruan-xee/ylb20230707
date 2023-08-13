@@ -7,11 +7,13 @@ import com.rxee.front.pageInfo.PageInfo;
 import com.rxee.front.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin
 @Api(tags = "产品相关功能")
 @RestController
 @RequestMapping("/v1/product")
@@ -48,5 +50,22 @@ public class ProductController extends BaseController {
             return ResultVo.fail_400();
         }
         return ResultVo.fail_204();
+    }
+
+    @ApiOperation(value = "产品详情信息", notes = "通过产品id查询产品详情和产品投资记录")
+    @GetMapping("/info")
+    public ResultVo queryProductById(@RequestParam("id") Integer id) {
+        ResultVo resultVo;
+        if (id != null && id > 0) {
+            ProductInfo productInfo = productService.queryById(id);
+            if (productInfo != null) {
+                resultVo = ResultVo.success(productInfo);
+            } else {
+                resultVo = ResultVo.fail_204();
+            }
+        } else {
+            resultVo = ResultVo.fail_400();
+        }
+        return resultVo;
     }
 }

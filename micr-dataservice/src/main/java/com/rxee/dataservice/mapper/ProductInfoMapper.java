@@ -16,4 +16,6 @@ public interface ProductInfoMapper {
                                         @Param("pageSize") int pageSize);
 
     Integer selectCountByType(@Param("pType") Integer pType);
+
+    ProductInfo selectProductById(@Param("id") Integer id);
 }

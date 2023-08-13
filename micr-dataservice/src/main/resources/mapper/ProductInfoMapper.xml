@@ -12,5 +12,8 @@
     <select id="selectCountByType" resultType="java.lang.Integer">
       select count(id) as nums from b_product_info where product_type = #{pType}
     </select>
+  <select id="selectProductById" resultType="com.rxee.api.entity.ProductInfo">
+    select * from b_product_info where id = #{id}
+  </select>
 
 </mapper>

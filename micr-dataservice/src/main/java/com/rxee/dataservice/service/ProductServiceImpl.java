@@ -49,4 +49,9 @@ public class ProductServiceImpl implements ProductService {
         }
         return count;
     }
+
+    @Override
+    public ProductInfo queryById(Integer id) {
+        return productInfoMapper.selectProductById(id);
+    }
 }

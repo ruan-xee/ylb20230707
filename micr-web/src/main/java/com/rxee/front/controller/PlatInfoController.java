@@ -4,12 +4,10 @@ import com.rxee.api.dto.BaseInfoDto;
 import com.rxee.front.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin
 @Api(tags = "平台信息功能")
 @RestController
 @RequestMapping("/v1/plat")

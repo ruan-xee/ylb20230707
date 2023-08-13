@@ -25,4 +25,9 @@ public interface ProductService {
      * 某个产品类型的总记录数
      */
     Integer queryRecordNumsByType(Integer pType);
+
+    /**
+     * 根据产品id，查询产品信息
+     */
+    ProductInfo queryById(Integer id);
 }

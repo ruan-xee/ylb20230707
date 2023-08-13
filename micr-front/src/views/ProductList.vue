@@ -98,7 +98,7 @@ export default {
       },
     }
   },
-  activated () {
+  mounted () {
     this.initPage()
   },
   methods: {
