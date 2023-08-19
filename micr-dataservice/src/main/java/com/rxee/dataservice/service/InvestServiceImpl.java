@@ -9,6 +9,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @DubboService(interfaceClass = InvestService.class, version = "1.0")
 public class InvestServiceImpl implements InvestService {
@@ -19,9 +20,13 @@ public class InvestServiceImpl implements InvestService {
      */
     @Override
     public List<BidInfoProduct> queryBidListByProductId(Integer productId, Integer pageNum, Integer pageSize) {
-        pageNum = CommonUtil.defaultPageNum(pageNum);
-        pageSize = CommonUtil.defaltPageSize(pageSize);
-        int offset = (pageNum - 1) * pageSize;
-        return bidInfoMapper.selectByProductId(productId, offset, pageSize);
+        List<BidInfoProduct> bidInfoProducts = new ArrayList<>();
+        if (Objects.nonNull(productId) && productId > 0) {
+            pageNum = CommonUtil.defaultPageNum(pageNum);
+            pageSize = CommonUtil.defaltPageSize(pageSize);
+            int offset = (pageNum - 1) * pageSize;
+            bidInfoProducts = bidInfoMapper.selectByProductId(productId, offset, pageSize);
+        }
+        return bidInfoProducts;
     }
 }

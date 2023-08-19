@@ -1,6 +1,7 @@
 package com.rxee.front.controller;
 
 
+import com.rxee.api.service.InvestService;
 import com.rxee.api.service.PlatBaseInfoService;
 import com.rxee.api.service.ProductService;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -22,4 +23,8 @@ public class BaseController {
     // redis模板工具
     @Resource
     protected StringRedisTemplate stringRedisTemplate;
+
+    // 投资服务
+    @DubboReference(interfaceClass = InvestService.class, version = "1.0")
+    protected InvestService investService;
 }
